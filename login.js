@@ -46,7 +46,6 @@ buttonElement.addEventListener('click', async ()=>{
         //Converte objeto em string para poder inserir no localstorage.
         localStorage.setItem('user', JSON.stringify(user));
 
-
         
 
     } catch(err){
