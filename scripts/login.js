@@ -1,6 +1,6 @@
 const buttonElement = document.querySelector(".submitButton");
 
-buttonElement.addEventListener('click', async ()=>{
+buttonElement.addEventListener('click', async () => {
     //Selecionando elementos html
     const emailElement = document.querySelector("#inputEmail");
     const passwordElement = document.querySelector("#inputPassword");
