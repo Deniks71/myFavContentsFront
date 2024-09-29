@@ -20,6 +20,7 @@ buttonElement.addEventListener('click', async ()=>{
     };
 
     try{
+        //Realizando a requisiçao HTTP
         const response = await fetch('http://localhost:3000/myfavcontent/login', {
             method: 'POST',
             headers: {
@@ -31,8 +32,22 @@ buttonElement.addEventListener('click', async ()=>{
             })
         })
 
+        //transformando response em um JSON, para poder visualizar e salvar posteriormente os dados retornados pelo servidor.
         const responseJson = await response.json()
         console.log(responseJson)
+
+        //acessando dados do response e salvando como objeto para inserir no local storage.
+        const user = {
+            email: responseJson.email,
+            id: responseJson.id,
+            token: responseJson.token
+        };
+
+        //Converte objeto em string para poder inserir no localstorage.
+        localStorage.setItem('user', JSON.stringify(user));
+
+
+        
 
     } catch(err){
         console.error('Erro:', err);
