@@ -7,12 +7,14 @@ buttonElement.addEventListener('click', async () => {
     const nameElement = document.querySelector("#inputName");
     const passwordElement = document.querySelector("#inputPassword");
     const confirmPasswordElement = document.querySelector("#inputConfirmPassword");
+    
 
     const email = emailElement.value;
     const name = nameElement.value;
     const password = passwordElement.value;
     const confirmpassword = confirmPasswordElement.value;
 
+    //Validando inputs do usuário
     if(!email){
         window.alert("Insira um email Valido");
         return;
@@ -49,7 +51,13 @@ buttonElement.addEventListener('click', async () => {
 
 
         const responseJson = await response.json();
-        console.log(responseJson);
+
+        window.alert(responseJson.msg)
+        
+        
+
+
+
     } catch(err){
         console.error('Erro:', err);
     }
