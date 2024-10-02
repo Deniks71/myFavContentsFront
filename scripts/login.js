@@ -43,7 +43,7 @@ buttonElement.addEventListener('click', async () => {
             token: responseJson.token
         };
 
-        //Converte objeto em string para poder inserir no localstorage.
+        //Converte objeto em string para poder inserir no localstorage. Entao salva email, id e token no localstorage.
         localStorage.setItem('user', JSON.stringify(user));
 
         
