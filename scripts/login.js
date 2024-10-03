@@ -46,6 +46,8 @@ buttonElement.addEventListener('click', async () => {
         //Converte objeto em string para poder inserir no localstorage. Entao salva email, id e token no localstorage.
         localStorage.setItem('user', JSON.stringify(user));
 
+        window.location.href = './favcontents.html';
+
         
 
     } catch(err){
