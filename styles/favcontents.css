@@ -26,3 +26,43 @@ header{
 #logout_button{
     margin-left: auto;
 }
+
+main{
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+}
+
+.input_container{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+   
+}
+
+input{
+    padding: 5px;
+}
+
+.button{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 6rem;
+    border-radius: 4px;
+}
+
+#inputconteudo{
+    width: 15rem;
+}
+
+#input_descricao{
+    width: 20rem;
+}
+
+.content_container{
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
