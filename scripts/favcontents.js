@@ -1,10 +1,11 @@
-const buttonFetchElement = document.querySelector('.testeFetch');
-buttonFetchElement.addEventListener('click', () => {
-    getContents();
-})
+// const buttonFetchElement = document.querySelector('.testeFetch');
+// buttonFetchElement.addEventListener('click', () => {
+//     getContents();
+// })
 
+getContents()
 async function getContents () {
-    const contentContainer = document.querySelector('.content_container');
+    
     
     const user = JSON.parse(localStorage.getItem('user'));
     console.log(user);
@@ -20,9 +21,48 @@ async function getContents () {
         });
 
         const jsonResponse = await response.json();
-        console.log(jsonResponse)
+
+        jsonResponse.conteudos.forEach(content => {
+            const contentContainer = document.querySelector('.content_container');
+
+            const contentDiv = document.createElement('div');
+            contentDiv.classList.add('content');
+
+            const contentDivText = document.createElement('div');
+            contentDivText.classList.add('content_text');
+
+            const titleElement = document.createElement('h3');
+            const descriptionElement = document.createElement('p')
+            titleElement.innerText = content.title;
+            descriptionElement.innerText = content.description;
+
+            contentDivText.appendChild(titleElement);
+            contentDivText.appendChild(descriptionElement);
+
+            contentDiv.appendChild(contentDivText);
+            
+            const divContentButtons = document.createElement('div');
+            divContentButtons.classList.add('content_buttons');
+
+            const deleteButtonElement = document.createElement('button');
+            deleteButtonElement.classList.add('delete-btn');
+            deleteButtonElement.classList.add('button');
+            deleteButtonElement.innerText = 'Delete';
+            deleteButtonElement.setAttribute('data-id', content.idcontent);
+
+            divContentButtons.appendChild(deleteButtonElement);
+
+            contentDiv.appendChild(divContentButtons);
+
+            contentContainer.appendChild(contentDiv);
+
+            
+        })
+
+        
 
     } catch (err){
         console.error('Erro:', err);
     }
 }
+
