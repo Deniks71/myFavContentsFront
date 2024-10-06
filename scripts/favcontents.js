@@ -2,8 +2,29 @@
 // buttonFetchElement.addEventListener('click', () => {
 //     getContents();
 // })
+getContents();
+const addButtonElement = document.querySelector('#insereConteudo_button');
 
-getContents()
+addButtonElement.addEventListener('click', () => {
+    const titleElement = document.querySelector('#inputconteudo');
+    const descriptionElement = document.querySelector('#input_descricao');
+
+    const title = titleElement.value;
+    const description = descriptionElement.value;
+
+    if(!title){
+        alert('Insira um conteúdo.');
+    };
+    if(!description){
+        alert('Insira uma descrição');
+    }
+
+    addContent(title,description);
+    titleElement.value = ""
+    descriptionElement.value = ""
+})
+
+
 async function getContents () {
     
     
@@ -64,5 +85,32 @@ async function getContents () {
     } catch (err){
         console.error('Erro:', err);
     }
-}
+};
+
+async function addContent (title,description) {
+    const user = JSON.parse(localStorage.getItem('user'));
+    console.log(user);
+
+    const contentData = {
+        title: title,
+        description: description
+    }
+    try{
+        const response = await fetch(`http://localhost:3000/myfavcontent/user/${user.id}/insertContent`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${user.token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(contentData)
+        })
+
+        console.log(response);
+        getContents();
+
+    } catch (err){
+        console.error('Erro:', err);
+    }
+
+};
 
