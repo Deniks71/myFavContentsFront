@@ -6,6 +6,12 @@ getContents();
 const addButtonElement = document.querySelector('#insereConteudo_button');
 const buttonDeleteElement = document.querySelectorAll('.delete-btn');
 const contentContainer = document.querySelector('.content_container');
+const logoutButtonElement = document.querySelector('#logout_button')
+
+logoutButtonElement.addEventListener('click', () => {
+    localStorage.removeItem('user');
+    window.location.href = './login.html';
+})
 
 contentContainer.addEventListener('click', (event) => {
    console.log(event)
@@ -39,8 +45,12 @@ addButtonElement.addEventListener('click', () => {
  
 async function getContents () {
     
-    
+  
     const user = JSON.parse(localStorage.getItem('user'));
+    if(!user){
+        window.location.href = './login.html';
+        return
+    }
     console.log(user);
 
     try{
